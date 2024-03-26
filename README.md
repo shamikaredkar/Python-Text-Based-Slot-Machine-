@@ -1,4 +1,3 @@
-[<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3ZweXJ0dXB5NmZuY3p0MmdjcTQ3NXFoYmNqNTE3bzRsaGZ1ZWlsOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13ln9K5TWkNTLa/giphy.gif" width="1000" height="400">](https://rishavchanda.io)
 # Python-Text-Based-Slot-Machine-💰
 <img width="228" alt="Screenshot 2024-03-26 at 2 35 14 PM" src="https://github.com/shamikaredkar/Python-Text-Based-Slot-Machine-/assets/83643214/52cb624c-c147-46f0-abb1-614d9c8c3f6f">
 
