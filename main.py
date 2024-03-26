@@ -26,63 +26,73 @@ symbol_value = {
 }
 
 def check_winnings(columns, lines, bet, values):
-    """
-    Calculate winnings based on the symbols matched.
-    Loops through each bet line to compare symbols across columns.
+    winnings = 0  # Initialize total winnings to zero
+    winnings_lines = []  # Initialize a list to keep track of winning lines
     
-    :param columns: Resulting symbols from the slot machine spin
-    :param lines: Number of lines the user bet on
-    :param bet: Bet amount per line
-    :param values: Dictionary mapping symbols to their values
-    :return: Total winnings and the winning lines
-    """
-    winnings = 0
-    winnings_lines = []
+    # Iterate through each line the player bet on
     for line in range(lines):
+        # Get the symbol in the first column of the current line
         symbol = columns[0][line]
+        
+        # Check if the same symbol is present in all columns of the current line
         for column in columns:
+            # If a symbol in the current column does not match, break out of the loop
             if symbol != column[line]:
-                break  # Stops checking this line if symbols don't match
+                break
         else:
-            # If all symbols in a line match, calculate winnings
-            winnings += values[symbol] * bet
-            winnings_lines.append(line + 1)  # Line numbers are 1-indexed for user readability
+            # If all symbols in the line match, calculate winnings
+            winnings += values[symbol] * bet  # Add winnings based on the symbol's value and the bet
+            winnings_lines.append(line + 1)  # Record the winning line, adjusting for 1-indexing
+    
+    # Return the total winnings and the list of winning lines
     return winnings, winnings_lines
 
 def get_slot_machine_spin(rows, cols, symbols):
-    """
-    Generates a slot machine spin by randomly selecting symbols based on their configured frequency.
-    
-    :param rows: Number of rows in the slot machine
-    :param cols: Number of columns in the slot machine
-    :param symbols: Dictionary of symbols and their counts in each reel
-    :return: A list of columns representing the slot machine's state
-    """
+    # Initialize the structure to hold the spin result for each column
     columns = []
+
+    # Loop over each column the slot machine should have
     for _ in range(cols):
+        # Initialize an empty list to hold the symbols for the current column
         column = []
+
+        # Create a list that contains all symbols according to their frequency
         all_symbols = []
         for symbol, count in symbols.items():
-            all_symbols += [symbol] * count
-        random.shuffle(all_symbols)
+            all_symbols += [symbol] * count  # Add 'symbol' 'count' times
+
+        # Randomly pick a symbol for each row in the current column
         for _ in range(rows):
-            value = random.choice(all_symbols)
-            all_symbols.remove(value)
-            column.append(value)
+            value = random.choice(all_symbols)  # Randomly choose a symbol
+            all_symbols.remove(value)  # Remove the chosen symbol to avoid repeat picks within the column
+            column.append(value)  # Add the chosen symbol to the current column
+
+        # Once the column is filled with symbols, add it to the 'columns' list
         columns.append(column)
+
+    # Return the result, which is a list of columns, each containing 'rows' number of symbols
     return columns
 
 def print_slot_machine(columns):
-    """
-    Prints the state of the slot machine in a user-friendly format.
-    
-    :param columns: List of columns with their symbols to print
-    """
-    for row in range(ROWS):
+    # Iterate through each row to print symbols across columns
+    for row in range(len(columns[0])):
+        # Initialize a variable to hold the symbols for the current row
+        row_symbols = []
+        
+        # Collect symbols from each column in the current row
         for i, column in enumerate(columns):
-            end_char = " | " if i < len(columns) - 1 else ""
-            print(column[row], end=end_char)
-        print()  # Newline after each row
+            # Append the symbol to the row_symbols list
+            row_symbols.append(column[row])
+            
+            # For all but the last column, add a separator
+            if i != len(columns) - 1:
+                row_symbols.append(" | ")
+        
+        # Join all symbols and separators into a single string
+        row_str = "".join(row_symbols)
+        
+        # Print the formatted string representing the current row of the slot machine
+        print(row_str)
 
 def deposit():
     """
