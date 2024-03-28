@@ -1,5 +1,8 @@
 # Python-Text-Based-Slot-Machine-💰
 <img width="228" alt="Screenshot 2024-03-26 at 2 35 14 PM" src="https://github.com/shamikaredkar/Python-Text-Based-Slot-Machine-/assets/83643214/52cb624c-c147-46f0-abb1-614d9c8c3f6f">
+<br>
+<img width="442" alt="Screenshot 2024-03-26 at 2 09 38 PM" src="https://github.com/shamikaredkar/Python-Text-Based-Slot-Machine-/assets/83643214/ea57fef1-fb6e-4bd0-8e65-b91d646ef153">
+
 
 This Python-based project simulates a slot machine, offering an interactive command-line interface where users can deposit funds, choose the number of lines to bet on, place bets, and spin to win. It's designed to mimic the basic functionalities of a real slot machine, including betting mechanisms, symbol odds, and payout calculations.
 
